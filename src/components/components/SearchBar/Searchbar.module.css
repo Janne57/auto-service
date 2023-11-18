@@ -1,0 +1,90 @@
+.form {
+    display: flex;
+    align-items: flex-end;
+    gap: 18px;
+    /* outline: 3px solid red; */
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 859px;
+}
+
+.form__text {
+    color: #8A8A89;
+    font-size: 14px;
+    line-height: 1.29;
+    /* margin-bottom: 8px; */
+}
+
+.form__text__div {
+display: flex;
+}
+
+.form__select {
+    /* padding: 14px 18px; */
+    width: 224px;
+    margin-top: 8px;
+}
+
+.form__select__price {
+    /* padding: 14px 18px; */
+    width: 125px;
+    height: 38px;
+    margin-top: 8px;
+}
+
+.form__text__mile {
+    width: 320px;
+    color: #8A8A89;
+    font-size: 14px;
+    line-height: 1.29;
+    /* margin-bottom: 8px; */
+    /* outline: 3px solid red; */
+}
+
+.form__text__input {
+    position: relative;
+    width: 160px;
+    margin-top: 8px;
+    padding: 6px 10px 6px 52px;
+    font-size: 16px;
+    line-height: 1.29;
+    color: #121417;
+    /* outline: 3px solid rgb(25, 216, 66); */
+}
+
+.form__text__inputlabel {
+position: absolute;
+top: 103px;
+left: 878px;
+z-index: 5;
+color: #121417;
+}
+
+.form__text__inputlabelto {
+    position: absolute;
+    top: 103px;
+    left: 1045px;
+    z-index: 5;
+    color: #121417;
+    }
+
+.search_btn {
+    width: 136px;
+    height: 48px;
+    /* padding: 12px, 99px; */
+    padding: 14px 44px;
+    /* padding: 12px, 99px, 12px, 99px; */
+    border-radius: 12px;
+    background-color: #3470FF;
+    font-family: Manrope;
+    font-size: 14px;
+    /* font-weight: 600; */
+    line-height: 20px;
+    /* letter-spacing: 0em; */
+    text-align: center;
+    color: #FFFFFF;
+    border-color: transparent;
+    /* margin-bottom: 0px; */
+
+}
