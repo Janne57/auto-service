@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 // import { ColorRing } from 'react-loader-spinner';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { getCars, getError, getIsLoading, getFilter } from 'redux/selectors.js';
