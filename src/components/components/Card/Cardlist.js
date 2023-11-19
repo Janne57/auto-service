@@ -6,44 +6,42 @@ import {
   addCarsFavorite,
   deleteCarsFavorite,
 } from '../../redux/carFavoriteSlice';
+// import Modal from '../Modal/Modal.js';
 import css from './CardList.module.css';
-
 
 const CardList = ({ carsData }) => {
   const [carsFavorite, setCarsFavorite] = useState([]);
   const dispatch = useDispatch();
-//   console.log('carsFavorite', carsFavorite);
+  //   console.log('carsFavorite', carsFavorite);
   console.log('setCarsFavorite', setCarsFavorite);
   const [isInFavorite, setIsInFavorite] = useState(false);
-
+//   const [isShowModal, setIsShowModal] = useState(false);
+  
 
   const handleClickFavorite = dataCar => {
-
     // if (carsFavorite.filter(car => car.id.includes(dataCar.id))) {
     const index = carsFavorite.findIndex(car => car.id === dataCar.id);
     // console.log('index', index);
     if (carsData.length === 0) {
-
       dispatch(addCarsFavorite(dataCar));
       setIsInFavorite(true);
       console.log('isInFavorite false first add', isInFavorite);
-
     } else {
-
       if (index === -1 && isInFavorite) {
         dispatch(deleteCarsFavorite(dataCar));
         setIsInFavorite(false);
         // console.log('isInFavorite false delete', isInFavorite);
-
       } else {
-
         dispatch(addCarsFavorite(dataCar));
         setIsInFavorite(true);
         // console.log('isInFavorite true add', isInFavorite);
-
       }
     }
   };
+
+//   const toggleModal = () => {
+//     setIsShowModal(false);
+//   };
 
   return (
     <div>
@@ -107,15 +105,22 @@ const CardList = ({ carsData }) => {
                 <span>{functionalities[1]}</span>
               </p>
               <button
+                type="button"
                 className={css.advert_btn}
-                //   onClick={() => {handleDelete(id);}}
-                //   disabled={result.isFetching}
+                // onClick={toggleModal}
               >
                 Learn more
               </button>
             </li>
           )
         )}
+        {/* {isShowModal && (
+        <Modal
+          largeImageURL={largeImageURL}
+          tags={tags}
+          onClose={toggleModal}
+        />
+      )} */}
       </ul>
     </div>
   );
