@@ -2,7 +2,7 @@
   "name": "auto-service",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Janne57.github.com/auto-service/",
+  "homepage": "https://Janne57.github.io/auto-service/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
     "@testing-library/jest-dom": "^5.16.3",
