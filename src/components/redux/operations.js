@@ -17,38 +17,3 @@ export const fetchCars = createAsyncThunk(
     }  
   }
 );
-
-// export const fetchCarsFavorite = createAsyncThunk(
-//   'cars/fetchAllFavorite',
-//   async (_, thunkAPI) => {
-//     try {
-//         const response = await axios.get('/cars');
-//         console.log('response', response)
-//         return response.data;
-//     } catch (error) {
-//         return thunkAPI.rejectWithValue(error.message);
-//     }  
-//   }
-// );
-
-// export const addCarsFavorite = createAsyncThunk(
-//   'cars/addCarsFavorite',
-//   async (text, thunkAPI) => {
-//     try {
-//         const response = await axios.post('/cars', text);
-//         return response.data;
-//     } catch (error) {
-//         return thunkAPI.rejectWithValue(error.message);
-//     }  
-//   }
-// );
-
-// export const deleteCarsFavorite = createAsyncThunk('cars/deleteCar',
-// async (carId, thunkAPI) => {
-//   try {
-//     const response = await axios.delete(`/cars/${carId}`);
-//     return response.data;
-//   } catch (error) {
-//     return thunkAPI.rejectWithValue(error.message);
-//   }
-// })

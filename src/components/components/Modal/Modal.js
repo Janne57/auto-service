@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import css from '../Modal/Modal.module.css';
 const { createPortal } = require('react-dom');
-// import stop from '../../img/placeholder.png';
 
 const Modal = ({
   ids,
@@ -90,8 +89,6 @@ const Modal = ({
           <span>Price:</span>
           <span>{rentalPricess}</span>
         </p>
-        {/* imgs, makes, models, years, rentalPricess, addresses, rentalCompanyss,
-        types, , fuelConsumptionstions, engineSizes, */}
         <a className={css.advert_btn} href="tel:+380730000000">
           Rental Car
         </a>

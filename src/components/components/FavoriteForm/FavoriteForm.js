@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { getFavoriteCars } from '../../redux/selector';
 import { useSelector } from 'react-redux';
 import CardList from '../Card/Cardlist'
 import BasicImg from '../../img/istockphoto-125419244-1024x1024.jpg';
+import Loader from '../Loader/Loader';
 import css from './FavoriteForm.module.css';
 
 
 const FavoriteForm = () => {
   const favoriteCars = useSelector(getFavoriteCars);
-//   console.log('favoriteCars', favoriteCars);
+  const [isLoading, setIsLoading] = useState(false);
+
 
   return (
     <div>
+       {isLoading && <Loader />}
       {favoriteCars.length > 0 ? (
         <CardList carsData={favoriteCars}/>
       ) : (

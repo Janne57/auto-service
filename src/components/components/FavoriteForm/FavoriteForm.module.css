@@ -17,7 +17,7 @@
   
 .notImgText {
     color: var(--primary-white-color);
-    /* font-family: Manrope; */
+    font-family: Manrope;
     display: flex;
     font-size: 14px;
     font-weight: 400;
