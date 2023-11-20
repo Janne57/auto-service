@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 // import { ColorRing } from 'react-loader-spinner';
 import { useDispatch } from 'react-redux';
 import stop from '../../img/placeholder.png';
@@ -7,41 +7,22 @@ import {
   deleteCarsFavorite,
 } from '../../redux/carFavoriteSlice';
 // import Modal from '../Modal/Modal.js';
+import { useSelector } from 'react-redux';
+import { getFavoriteCars } from '../../redux/selector';
 import css from './CardList.module.css';
 
 const CardList = ({ carsData }) => {
-  const [carsFavorite, setCarsFavorite] = useState([]);
   const dispatch = useDispatch();
-  //   console.log('carsFavorite', carsFavorite);
-  console.log('setCarsFavorite', setCarsFavorite);
-  const [isInFavorite, setIsInFavorite] = useState(false);
-//   const [isShowModal, setIsShowModal] = useState(false);
-  
+  const favoriteCars = useSelector(getFavoriteCars);
+  // console.log('favoriteCars', favoriteCars);
 
-  const handleClickFavorite = dataCar => {
-    // if (carsFavorite.filter(car => car.id.includes(dataCar.id))) {
-    const index = carsFavorite.findIndex(car => car.id === dataCar.id);
-    // console.log('index', index);
-    if (carsData.length === 0) {
-      dispatch(addCarsFavorite(dataCar));
-      setIsInFavorite(true);
-      console.log('isInFavorite false first add', isInFavorite);
+  const handleClickFavorite = carInfo => {
+    if (!favoriteCars.some(car => car.id === carInfo.id)) {
+      dispatch(addCarsFavorite(carInfo));
     } else {
-      if (index === -1 && isInFavorite) {
-        dispatch(deleteCarsFavorite(dataCar));
-        setIsInFavorite(false);
-        // console.log('isInFavorite false delete', isInFavorite);
-      } else {
-        dispatch(addCarsFavorite(dataCar));
-        setIsInFavorite(true);
-        // console.log('isInFavorite true add', isInFavorite);
-      }
+      dispatch(deleteCarsFavorite(carInfo));
     }
   };
-
-//   const toggleModal = () => {
-//     setIsShowModal(false);
-//   };
 
   return (
     <div>

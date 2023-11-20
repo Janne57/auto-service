@@ -15,6 +15,7 @@ const FavoriteCarPage = lazy(() => import('./pages/FavoriteCarPage'));
 
 export const App = () => {
   return (
+    // <BrowserRouter basename="/auto-service">
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
@@ -22,7 +23,7 @@ export const App = () => {
         <Route path="favorites" element={<FavoriteCarPage />} />
       </Route>
     </Routes>
-
+    // </BrowserRouter>
     // <div className={css.basic}>
     // <div>
     //   {/* <h1 className={css.basic_text}>Phonebook</h1> */}
