@@ -9,7 +9,7 @@ import { App } from 'components/App.jsx';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
      <Provider store={store}>
     
       <BrowserRouter basename="/auto-service">
@@ -19,7 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </BrowserRouter>
 
     </Provider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 
 // ReactDOM.createRoot(document.getElementById('root')).render(
