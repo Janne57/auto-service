@@ -1,94 +1,16 @@
-# Model pentru un proiect React
+This application is for a company that provides car rental services in Ukraine. The application consists of 3 pages:
+• home page with a general description of the services provided by the company. Stylization and design at your discretion.
+• a page containing a catalog of cars of various configurations, which the user can filter by brand, price per hour of car rental and the number of kilometers covered by the car during its operation (mileage).
+• a page with ads that have been added by the user to favorites. The appearance of the program should consist of navigation (design at your discretion) and a viewing area.
 
-Acest proiect a fost creat cu ajutorul
-[Create React App](https://github.com/facebook/create-react-app). Pentru prezentări
-și configurarea de funcții suplimentare
-[consultă documentația](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Car rental announcement card.
+2. On the first page of the catalog, 12 ads will be rendered, and the rest of them - by clicking on the Load more button.
+3. If you click on the button in the form of a "heart" on the ad card, it should be added to the list of favorites, and the color of the button should change.
+4. When updating the page, the final result of the user's actions is recorded. That is, if you add an ad to your favorites and refresh the page, the button still remains in the "favorite ad" state with the appropriate color.
+5. If you click the heart button again, the ad will be removed from the list of favorites, and the color of the button will change to its original state.
 
-## Crearea unui repository în baza modelului
+6. If you click on the Learn more button, a modal window opens with detailed information about the car and its rental conditions. 7. The modal window is closed by clicking on the button in the form of a "cross", by clicking on the backdrop or pressing the Esc key. 8. In the code, the mileage of the car is written by one value (for example, 4500). In the UI - displayed with a comma (4,500). 9. The Rental car button is a link that will allow the user to connect with the company by phone number +380730000000. 10. filtering. dropdown with car brands makes.json - shows ads with cars of the corresponding brand
 
-Utilizează acest repository al organizației GoIT ca model pentru crearea unui repository
-pentru proiectul tău. Pentru a face acest lucru, dă click pe "Use this template" și selectează opțiunea
-`Create a new repository`, după cum se prezintă în imagine.
-
-![Creating repo from a template step 1](./assets/template-step-1.png)
-
-Următorul pas va deschide pagina de creare a unui nou repository. Completează câmpul
-pentru numele acestuia, asigură-te că repository-ul este public, apoi dă click pe `Create repository from template`.
-
-![Creating repo from a template step 2](./assets/template-step-2.png)
-
-Odată ce repository-ul a fost creat, trebuie să accesezi setările repository-ului creat în fila `Settings > Actions > General`, după cum se prezintă în imagine.
-
-![Settings GitHub Actions permissions step 1](./assets/gh-actions-perm-1.png)
-
-După ce ai derulat până la sfârșitul paginii, în secțiunea `Workflow permissions`, selectează `Read and write permissions`, (Permisiuni de citire și scriere) și bifează caseta. Acest lucru
-este necesar pentru a automatiza procesul de lansare a proiectului.
-
-![Settings GitHub Actions permissions step 2](./assets/gh-actions-perm-2.png)
-
-Avei acum un repository personal de proiecte, cu o structură de fișiere și foldere.
-
-Lucrează apoi cu acesta așa cum ai face-o cu orice alt repository personal,
-clonează-l pe computerul tău, scrie cod, confirmă-l și încarcă-l pe
-GitHub.
-
-## Pregătirea pentru muncă
-
-1. Asigură-te că ai versiunea LTS a Node.js instalată pe computerul personal.
-   [Descarcă și instalează](https://nodejs.org/en/) dacă este necesar.
-2. Instalează dependențele de bază ale proiectului cu comanda `npm install`.
-3. Pornește modul de dezvoltare utilizând comanda `npm start`.
-4. Accesează [http://localhost:3000](http://localhost:3000) în browser-ul tău.
-   Această pagină se va reîncărca automat după salvarea modificărilor în fișierele proiectului.
-
-## Deploy
-
-Versiunea de producție a proiectului va trece automat prin procesul de linting, va fi asamblată și implementată pe GitHub Pages, în ramura `gh-pages`, de fiecare dată când ramura `main` este actualizată. De exemplu, după un push direct sau o cerere de pull-request acceptată. 
-
-Pentru a face acest lucru, trebuie să editeezi câmpul "homepage" din fișierul package.json, înlocuind "your_username" și "your_repo_name" cu detaliile tale, apoi să trimiți aceste modificări pe GitHub.
-
-json
-"homepage": "https://your_username.github.io/your_repo_name/"
-
-În continuare, mergi la setările repository-ului GitHub (`Settings` > `Pages`) și setează distribuirea versiunii de producție a fișierelor în folderul `/root` al ramurii `gh-pages`, dacă acest lucru nu a fost făcut în mod automat.
-
-![GitHub Pages settings](./assets/repo-settings.png)
-
-### Deployment status
-
-Starea de implementare a celui mai recent commit este afișat printr-o iconiță lângă ID-ului acestuia.
-
-- **Galben** - proiectul este în curs de asamblare și de implementare.
-- **Verde** - implementarea a fost finalizată cu succes.
-- **Roșu** - a apărut o eroare în timpul procesului de linting, asamblării sau implementării.
-
-Pentru a obține informații mai detaliate despre starea implementării, poți da click pe iconița corespunzătoare și apoi accesează link-ul "Details" din fereastra pop-up care se deschide.
-
-![Deployment status](./assets/deploy-status.png)
-
-### Pagina live
-
-După un anumit interval de timp, de obicei câteva minute, poți vizualiza pagina live la adresa indicată în proprietatea "homepage" editată. De exemplu, iată un link către versiunea live pentru acest repository:
-[https://goitacademy.github.io/react-homework-template](https://goitacademy.github.io/react-homework-template).
-
-Dacă se deschide o pagină goală, asigură-te că în fila "Console" nu există erori legate de căi greșite către fișierele CSS și JS ale proiectului (**Eroare 404**). Cel mai probabil, valoarea proprietății "homepage" din fișierul package.json este incorectă.
-
-### Rutarea
-
-Dacă aplicația utilizează biblioteca react-router-dom pentru rutare,
-trebuie să configurezi suplimentar componenta `<BrowserRouter>`, trecând în prop-ul "basename" numele exact al repository-ului tău. Bara oblică la începutul șirului este obligatorie.
-
-jsx
-<BrowserRouter basename="/your_repo_name">
-  <App />
-</BrowserRouter>
-
-
-## Cum funcționează
-
-![How it works](./assets/how-it-works.png)
-
-1. După fiecare "push" în ramura `main` a repository-ului GitHub, se va crea un fișier special script (GitHub Action) din fișierul `.github/workflows/deploy.yml`.
-2. Toate fișierele din repository sunt copiate pe server, unde proiectul este inițializat, este efectuat linting-ul și asamblarea înainte de implementare.
-3. Dacă toți pașii sunt finalizați cu succes, versiunea asamblată în producție a fișierelor proiectului este trimisă în ramura `gh-pages`. În caz contrar, în jurnalul (log) de execuție al scriptului vor fi indicate problemele întâlnite.
+The application has the following routes: "/" - the home page with a general description of the services provided by the company "/catalog" - a page containing a catalog of cars of various configurations "/favorites" - a page with ads that have been added by the user to favorites If the user entered by a route that does not exist, it must be redirected to the home page.
+To work with a list of ads, there is a personal backend for development using the UI service https://mockapi.io/. There is an adverts resource. Object of the announcement:
+Advert with the following fields: id, year, make, model, type, img, description, fuelConsumption, engineSize, accessories, functionalities, rentalPrice, rentalCompany, address, rentalConditions, mileage

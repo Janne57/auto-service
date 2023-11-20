@@ -1,105 +1,16 @@
-# React homework template
+This application is for a company that provides car rental services in Ukraine. The application consists of 3 pages:
+• home page with a general description of the services provided by the company. Stylization and design at your discretion.
+• a page containing a catalog of cars of various configurations, which the user can filter by brand, price per hour of car rental and the number of kilometers covered by the car during its operation (mileage).
+• a page with ads that have been added by the user to favorites. The appearance of the program should consist of navigation (design at your discretion) and a viewing area.
 
-Este proyecto fue creado con la ayuda de
-[Create React App](https://github.com/facebook/create-react-app).
-[Consulte la documentación](https://facebook.github.io/create-react-app/docs/getting-started)
-para familiarizarse con las funciones opcionales y configurarlas.
+1. Car rental announcement card.
+2. On the first page of the catalog, 12 ads will be rendered, and the rest of them - by clicking on the Load more button.
+3. If you click on the button in the form of a "heart" on the ad card, it should be added to the list of favorites, and the color of the button should change.
+4. When updating the page, the final result of the user's actions is recorded. That is, if you add an ad to your favorites and refresh the page, the button still remains in the "favorite ad" state with the appropriate color.
+5. If you click the heart button again, the ad will be removed from the list of favorites, and the color of the button will change to its original state.
 
-## Crear un repositorio desde una plantilla
+6. If you click on the Learn more button, a modal window opens with detailed information about the car and its rental conditions. 7. The modal window is closed by clicking on the button in the form of a "cross", by clicking on the backdrop or pressing the Esc key. 8. In the code, the mileage of the car is written by one value (for example, 4500). In the UI - displayed with a comma (4,500). 9. The Rental car button is a link that will allow the user to connect with the company by phone number +380730000000. 10. filtering. dropdown with car brands makes.json - shows ads with cars of the corresponding brand
 
-Usa este repositorio de la organización GoIT como plantilla para crear el repositorio de tu proyecto. 
-Para hacer esto, haz clic en `«Use this template»` y selecciona la opción
-`«Create a new repository»`, tal como se muestra en la imagen.
-
-![Creating repo from a template step 1](./assets/template-step-1.png)
-
-Para el siguiente paso deberás abrir la página para crear un nuevo repositorio. 
-Ponle nombre, asegúrate de que el repositorio sea público y haz clic en el botón
-`«Create repository from template»`.
-
-![Creating repo from a template step 2](./assets/template-step-2.png)
-
-Ahora ya tienes un repositorio de proyecto personal, junto a una estructura de 
-archivos y carpetas del repositorio de plantillas. Luego trabaja con esto, así 
-como con cualquier otro repositorio personal, realiza una copia en tu computadora 
-y súbelo a GitHub.
-
-## Prepararse para el trabajo
-
-1. Asegúrate de que la versión LTS de Node.js está instalada en tu computador.
-   [Descárguela e instálela](https://nodejs.org/en/) de ser necesario.
-2. Instala las dependencias base del proyecto con el comando `npm install`.
-3. Inicia el modo de desarrollo ejecutando el comando `npm start`.
-4. En tu navegador, ve a la dirección
-   [http://localhost:3000](http://localhost:3000). Esta página se recargará
-   automáticamente después de guardar los cambios en los archivos del proyecto.
-
-## Implementación
-
-La versión de producción del proyecto se verificará, compilará y desplegará
-automáticamente en GitHub Pages, en la rama `gh-pages`, cada vez que se
-actualice la rama `main`. Por ejemplo, después de un Push directo o de una
-Pool-request aceptada. Para ello, edita el campo `homepage` del archivo
-`package.json`, sustituyendo `your_username` y `your_repo_name` por los tuyos
-propios, y envía los cambios a GitHub.
-
-```json
-"homepage": "https://your_username.github.io/your_repo_name/"
-```
-
-A continuación, ve a la configuración del repositorio de GitHub (`Settings` >
-`Pages`) y selecciona distribuir la versión de producción de los archivos desde
-la carpeta `/root` de la rama `gh-pages`, si no se ha hecho automáticamente.
-
-![GitHub Pages settings](./assets/repo-settings.png)
-
-### Estado de la implantación
-
-El estado del último commit se indica con un icono junto al ID del commit.
-
-- **Color amarillo** - el proyecto está compilado e implementado.
-- **Color verde** - La implementación se completó con éxito.
-- **Color rojo** - Se ha producido un error durante la verificación, la
-  compilación o la implementación
-
-Se puede ver información de estado más detallada haciendo clic en el icono y en
-la ventana desplegable del enlace `Detalles`.
-
-![Deployment status](./assets/deploy-status.png)
-
-### Página activa
-
-Después de un tiempo, normalmente un par de minutos, la página real se puede ver
-en la dirección especificada en la propiedad `homepage`. Por ejemplo, aquí está
-el enlace a la versión activa de este repositorio
-[https://goitacademy.github.io/react-homework-template](https://goitacademy.github.io/react-homework-template).
-
-Si se abre una página en blanco, asegúrate de que no haya errores en la pestaña
-`Console` relacionados con rutas incorrectas de archivos CSS y JS del proyecto
-(**404**). Probablemente tienes un valor incorrecto para la propiedad `homepage`
-en el archivo `package.json`.
-
-### Enrutamiento
-
-Si la aplicación utiliza la librería `react-router-dom` para el enrutamiento, el
-componente `<BrowserRouter>` debe ser configurado adicionalmente pasando en la
-prop `basename`, el nombre exacto de tu repositorio. Las barras inclinadas al
-principio y al final de la cadena son obligatorias.
-
-```jsx
-<BrowserRouter basename="/your_repo_name/">
-  <App />
-</BrowserRouter>
-```
-
-## ¿Cómo funciona?
-
-![How it works](./assets/how-it-works.png)
-
-1. Después de cada push a la rama `main` del repositorio GitHub, se ejecuta un
-   script especial (GitHub Action) del archivo `.github/workflows/deploy.yml`.
-2. Todos los archivos del repositorio se copian en el servidor, donde el
-   proyecto se inicializa, se verifica y se compila antes de ser implementado.
-3. Si todos los pasos tienen éxito, la versión de producción compilada de los
-   archivos del proyecto se envía a la rama `gh-pages`. De lo contrario, el
-   registro de ejecución del script indicará cuál es el problema.
+The application has the following routes: "/" - the home page with a general description of the services provided by the company "/catalog" - a page containing a catalog of cars of various configurations "/favorites" - a page with ads that have been added by the user to favorites If the user entered by a route that does not exist, it must be redirected to the home page.
+To work with a list of ads, there is a personal backend for development using the UI service https://mockapi.io/. There is an adverts resource. Object of the announcement:
+Advert with the following fields: id, year, make, model, type, img, description, fuelConsumption, engineSize, accessories, functionalities, rentalPrice, rentalCompany, address, rentalConditions, mileage

@@ -9,17 +9,17 @@ import { App } from 'components/App.jsx';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
+
      <Provider store={store}>
-    
+
       <BrowserRouter basename="/auto-service">
-         {/* <PersistGate loading={null} persistor={persistor}> */}
+
           <App /> 
-                {/* </PersistGate> */}
+
       </BrowserRouter>
 
     </Provider>
-  // </React.StrictMode>
+    
 );
 
 // ReactDOM.createRoot(document.getElementById('root')).render(

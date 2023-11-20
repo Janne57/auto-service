@@ -1,5 +1,5 @@
 .headernav {
-    position: fixed;
+    /* position: fixed; */
     z-index: 10;
     display: flex;
     text-align: center;
@@ -13,6 +13,7 @@
     /* min-height: 100vh; */
     /* min-height: calc(100vh - 50px); */
     justify-content: center;
+    /* margin-bottom: 20px; */
 
 
     /* background: linear-gradient(217deg, rgba(167, 152, 221, 0.8), rgba(224, 177, 133, 0) 70.71%),

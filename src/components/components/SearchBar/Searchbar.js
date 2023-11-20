@@ -35,8 +35,7 @@ const Searchbar = ({ onSubmit }) => {
     evt.preventDefault();
 
     setQuery(evt.currentTarget.value);
-    // console.log('query', query)
-    onSubmit(query.trim()); //вызываем имя пропса, кот.передаётся из onSubmit, в кот-м лежит  ссылка на метод handleFormSubmit
+    onSubmit(query.trim()); 
     setQuery('');
   };
 
@@ -49,8 +48,8 @@ const Searchbar = ({ onSubmit }) => {
       rentalPriceOptions.push({ value: item, label: item })
     );
   }
-  console.log('makesOptions', makesOptions);
-  console.log('rentalPriceOptions', rentalPriceOptions);
+  // console.log('makesOptions', makesOptions);
+  // console.log('rentalPriceOptions', rentalPriceOptions);
  
 
   // const handleInputChange = inputValue => {

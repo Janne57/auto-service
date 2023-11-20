@@ -55,7 +55,7 @@ display: flex;
 
 .form__text__inputlabel {
 position: absolute;
-top: 103px;
+top: 142px;
 left: 878px;
 z-index: 5;
 color: #121417;
@@ -63,7 +63,7 @@ color: #121417;
 
 .form__text__inputlabelto {
     position: absolute;
-    top: 103px;
+    top: 142px;
     left: 1045px;
     z-index: 5;
     color: #121417;
