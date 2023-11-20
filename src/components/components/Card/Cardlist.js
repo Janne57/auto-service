@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ColorRing } from 'react-loader-spinner';
+// import { ColorRing } from 'react-loader-spinner';
 import { useDispatch } from 'react-redux';
 import stop from '../../img/placeholder.png';
 import {
