@@ -14,7 +14,7 @@ import css from './CardList.module.css';
 const CardList = ({ carsData }) => {
   const dispatch = useDispatch();
   const favoriteCars = useSelector(getFavoriteCars);
-  // console.log('favoriteCars', favoriteCars);
+  console.log('favoriteCars', favoriteCars);
 
   const handleClickFavorite = carInfo => {
     if (!favoriteCars.some(car => car.id === carInfo.id)) {
