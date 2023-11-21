@@ -157,8 +157,8 @@ const CardList = ({ carsData }) => {
               {isShowBtn ?
               <ReactSVG src={heart} /> :
               <ReactSVG src={heartblue} />}
+              {/* </button> */}
               </button>
-
               <p className={css.advert__list__text}>
                 <div className={css.advert__list__flex}>
                   <span>{make}</span>
