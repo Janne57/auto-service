@@ -16,6 +16,7 @@
 
 .form__text__div {
 display: flex;
+position: relative;
 }
 
 .form__select {
@@ -37,7 +38,7 @@ display: flex;
 }
 
 .form__text__input {
-    position: relative;
+    /* position: relative; */
     width: 160px;
     margin-top: 8px;
     padding: 6px 10px 6px 52px;
@@ -48,16 +49,16 @@ display: flex;
 
 .form__text__inputlabel {
 position: absolute;
-top: 142px;
-left: 545px;
+top: 15px;
+left: 8px;
 z-index: 2;
 color: #121417;
 }
 
 .form__text__inputlabelto {
     position: absolute;
-    top: 142px;
-    left: 705px;
+    top: 15px;
+    left: 170px;
     z-index: 2;
     color: #121417;
     }

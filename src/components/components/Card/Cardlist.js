@@ -19,6 +19,8 @@ const CardList = ({ carsData }) => {
   const favoriteCars = useSelector(getFavoriteCars);
   const [isShowBtn, setIsShowBtn] = useState(false);
   const [isShowModal, setIsShowModal] = useState(false);
+  // const [isFavorite, setIsFavorite] = useState(false);
+  
   const [ids, setIds] = useState(null);
   const [imgs, setImgs] = useState(null);
   const [makes, setMakes] = useState(null);
@@ -46,9 +48,12 @@ const CardList = ({ carsData }) => {
       // if (!favoriteCars.some(car => car.id === carInfo.id)) {
       dispatch(addCarsFavorite(carInfo));
       setIsShowBtn(true);
+      // setIsFavorite((prevFavorite)=> !prevFavorite)
+      // setIsFavorite((prevFavorite) => !prevFavorite);
     } else {
       dispatch(deleteCarsFavorite(carInfo));
       setIsShowBtn(false);
+      //  setIsFavorite((prevFavorite)=> !prevFavorite);
     }
   };
 
