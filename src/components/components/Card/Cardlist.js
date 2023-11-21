@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ReactSVG } from 'react-svg';
 // import { ColorRing } from 'react-loader-spinner';
 import { useDispatch } from 'react-redux';
 import stop from '../../img/placeholder.png';
@@ -9,13 +10,16 @@ import {
 import Modal from '../Modal/Modal.js';
 import { useSelector } from 'react-redux';
 import { getFavoriteCars } from '../../redux/selector';
+import heart from '../../img/Vector.svg';
+import heartblue from '../../img/Vector_blue.svg';
 import css from './CardList.module.css';
 
 const CardList = ({ carsData }) => {
   const dispatch = useDispatch();
   const favoriteCars = useSelector(getFavoriteCars);
+  const [isShowBtn, setIsShowBtn] = useState(false);
   const [isShowModal, setIsShowModal] = useState(false);
-  const [ids, setIds]= useState(null);
+  const [ids, setIds] = useState(null);
   const [imgs, setImgs] = useState(null);
   const [makes, setMakes] = useState(null);
   const [models, setModels] = useState(null);
@@ -31,16 +35,22 @@ const CardList = ({ carsData }) => {
   const [functionalitiess, setFunctionalitiess] = useState(null);
   const [rentalConditionss, setRentalConditionss] = useState(null);
   const [mileages, setMileages] = useState(null);
-  
+
+  let itemFavoriteCars;
 
   const handleClickFavorite = carInfo => {
-    if (!favoriteCars.some(car => car.id === carInfo.id)) {
+    itemFavoriteCars = favoriteCars.some(car => car.id === carInfo.id);
+    console.log('itemFavoriteCars', itemFavoriteCars);
+
+    if (!itemFavoriteCars) {
+      // if (!favoriteCars.some(car => car.id === carInfo.id)) {
       dispatch(addCarsFavorite(carInfo));
+      setIsShowBtn(true);
     } else {
       dispatch(deleteCarsFavorite(carInfo));
+      setIsShowBtn(false);
     }
   };
-
 
   const openModal = ({
     id,
@@ -137,10 +147,18 @@ const CardList = ({ carsData }) => {
                   })
                 }
                 className={css.advert_icon_btn}
-                style={{ stroke: 'red' }}
               >
-                <i className="fa fa-heart"></i>
+                {/* {itemFavoriteCars ? 
+                  <ReactSVG src={heartblue} />
+                 : 
+                  <ReactSVG src={heart} />
+                } 
+              </button> */}
+              {isShowBtn ?
+              <ReactSVG src={heart} /> :
+              <ReactSVG src={heartblue} />}
               </button>
+
               <p className={css.advert__list__text}>
                 <div className={css.advert__list__flex}>
                   <span>{make}</span>
@@ -186,26 +204,25 @@ const CardList = ({ carsData }) => {
           )
         )}
         {isShowModal && (
-          <Modal 
-          ids={ids}
-          imgs={imgs} 
-          makes={makes} 
-          models ={models}
-          years={years}
-          rentalPrices={rentalPrices}
-          addresses={addresses}
-          rentalCompanys={rentalCompanys}
-          types={types}
-          accessoriess={accessoriess}
-          fuelConsumptions={fuelConsumptions}
-          engineSizes={engineSizes}
-          descriptions={descriptions}
-          functionalitiess={functionalitiess}
-          rentalConditionss={rentalConditionss}
-          mileages={mileages}
-
-          onClose={closeModal}>
-          </Modal>
+          <Modal
+            ids={ids}
+            imgs={imgs}
+            makes={makes}
+            models={models}
+            years={years}
+            rentalPrices={rentalPrices}
+            addresses={addresses}
+            rentalCompanys={rentalCompanys}
+            types={types}
+            accessoriess={accessoriess}
+            fuelConsumptions={fuelConsumptions}
+            engineSizes={engineSizes}
+            descriptions={descriptions}
+            functionalitiess={functionalitiess}
+            rentalConditionss={rentalConditionss}
+            mileages={mileages}
+            onClose={closeModal}
+          ></Modal>
         )}
       </ul>
     </div>
