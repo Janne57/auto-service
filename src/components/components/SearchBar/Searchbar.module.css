@@ -51,7 +51,7 @@ position: relative;
 position: absolute;
 top: 15px;
 left: 8px;
-z-index: 2;
+/* z-index: 2; */
 color: #121417;
 }
 
@@ -59,7 +59,7 @@ color: #121417;
     position: absolute;
     top: 15px;
     left: 170px;
-    z-index: 2;
+    /* z-index: 1; */
     color: #121417;
     }
 

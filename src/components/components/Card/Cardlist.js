@@ -159,7 +159,7 @@ const CardList = ({ carsData }) => {
                   <ReactSVG src={heart} />
                 } 
               </button> */}
-              {isShowBtn ?
+              {!isShowBtn ?
               <ReactSVG src={heart} /> :
               <ReactSVG src={heartblue} />}
               {/* </button> */}
