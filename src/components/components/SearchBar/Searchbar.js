@@ -11,32 +11,36 @@ import css from './Searchbar.module.css';
 
 const Searchbar = ({ onSubmit }) => {
   const [query, setQuery] = useState('');
-  const [valueSelect, setValueSelect] = useState('');
+  // const [valueSelect, setValueSelect] = useState({
+  //   value: 'Enter the text...',
+  //   label: 'Enter the text...',
+  // });
+ 
   // const [inputValue, setInputValue] = useState('');
   const cars = useSelector(getCars);
+
+  const [selectedValue, setSelectedValue] = useState('');
+
 
 
   let makesOptions = [];
   let rentalPriceOptions = [];
 
-  
-  const handleChange = (event) => {
-  //   console.log('event.currentTarget', event.currentTarget);
-  //   console.log('event.target.value', event.target.value);
-    const selectedValue = event.currentTarget;
-    setValueSelect(selectedValue);
-   
-  };
 
   const handleSubmit = evt => {
     evt.preventDefault();
+    console.log('evt.currentTarget.value', evt.currentTarget.value);
 
     setQuery(evt.currentTarget.value);
-    onSubmit(query.trim()); 
+    console.log('query', query);
+
+    onSubmit(query.trim());
     setQuery('');
   };
+  // console.log('handleSubmit', handleSubmit);
 
-  
+
+
   if (cars) {
     cars.forEach(item =>
       makesOptions.push({ value: item.make, label: item.make })
@@ -46,87 +50,68 @@ const Searchbar = ({ onSubmit }) => {
     );
   }
 
- 
+
 
   // const handleInputChange = inputValue => {
   //   setValueSelect(inputValue);
   //   console.log('inputValue', inputValue);
   // };
 
-  
 
+  const handleChange = selectedOption => {
+    setSelectedValue(selectedOption.value);
+    console.log('SelectedValueu 98', selectedValue);
+  };
+
+  
   return (
     <form className={css.form} onSubmit={handleSubmit}>
       <label className={css.form__text}>
         Car brand
         <Select
+          placeholder="Enter the text..."
           className={css.form__select}
-          // placeholder="Select..."
-          defaultValue={{
-            value: 'Enter the text...',
-            label: 'Enter the text...',
-          }}
           name="make"
-          value={{ value: '', label: valueSelect || 'Enter the text...' }}
           options={[{ value: 'Enter the text...' }, ...makesOptions]}
-          // onChange={cars => handleSetSearchParams('make', cars.value)}
-          // onChange={data => handleSetSearchParams('make', data.make)}
-          onChange ={e => handleChange(e)}
-          //  onChange ={handleChange}
-          // inputValue={inputValue}
-          // onInputChange={evt => handleInputChange(evt)}
-          // onInputChange={handleChange}
-          // styles={style}
-        ></Select>
+          onChange={handleChange}
+        />
       </label>
 
       <label className={css.form__text}>
         Price/1 hour
         <Select
-          className={css.form__select__price}
-          placeholder="Select..."
-          defaultValue={{
-            value: 'To $',
-            label: 'To $',
-          }}
+          placeholder="To $"
+          className={css.form__select}
           name="rentalPrice"
-          // value={{ value: '', label: makeParam || 'Enter the text...' }}
-          value={{ value: '', label: 'To $' }}
           options={[{ value: 'To $' }, ...rentalPriceOptions]}
-          // options={[{ value: 'To $' }, rentalPrice]}
-          // onChange={data => handleSetSearchParams('make', data.value)}
-          // inputValue={inputValue}
-          // onInputChange={evt => handleInputChange(evt)}
-          // styles={style}
-
+          onChange={handleChange}
         />
       </label>
 
-      <label className={css.form__text__mile}>
+      <label htmlFor="mileFrom" className={css.form__text__mile}>
         Car mileage / km
         <div className={css.form__text__div}>
           <input
             className={css.form__text__input}
-            // className="input"
             type="text"
+            mask="9,999"
             autoComplete="off"
             autoFocus
-            // placeholder="Enter the text"
             name="query"
             value={query}
             // onChange={handleChange}
             id="mileFrom"
           />
-          <label for="mileFrom" className={css.form__text__inputlabel}>
+          <label htmlFor="mileFrom" className={css.form__text__inputlabel}>
             From
           </label>
           <input
             // className="input"
+            htmlFor="mileTo"
             className={css.form__text__input}
             type="text"
             autoComplete="off"
             autoFocus
-            // placeholder="Enter the text"
             name="query"
             value={query}
             // onChange={handleChange}
@@ -142,7 +127,6 @@ const Searchbar = ({ onSubmit }) => {
         <span className="button-label">Search</span>
       </button>
     </form>
-    // </header>
   );
 };
 
