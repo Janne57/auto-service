@@ -40,7 +40,7 @@ const CardList = ({ carsData }) => {
 
   const handleClickFavorite = carInfo => {
     itemFavoriteCars = favoriteCars.some(car => car.id === carInfo.id);
-    console.log('itemFavoriteCars', itemFavoriteCars);
+    // console.log('itemFavoriteCars', itemFavoriteCars);
 
     if (!itemFavoriteCars) {
       // if (!favoriteCars.some(car => car.id === carInfo.id)) {
