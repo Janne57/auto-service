@@ -1,35 +1,37 @@
 // import { useCallback, useState } from 'react';
 import { useState } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
-import { getCars } from '../../redux/selector';
+import { getCars, getFilter } from '../../redux/selector';
 import { rentalPrice } from '../../hooks/const';
+import { filterCar } from 'components/redux/filterSlice';
 
 import css from './Searchbar.module.css';
 // import Notiflix from 'notiflix';
 
 const Searchbar = ({ onSubmit }) => {
   const [query, setQuery] = useState('');
-  // const [valueSelect, setValueSelect] = useState({
-  //   value: 'Enter the text...',
-  //   label: 'Enter the text...',
-  // });
- 
-  // const [inputValue, setInputValue] = useState('');
+
+
+  
   const cars = useSelector(getCars);
-
+  const valueFilter = useSelector(getFilter);
   const [selectedValue, setSelectedValue] = useState('');
-
-
+  const [selectedValuePrice, setSelectedValuePrice] = useState('');
+  const [selectedValueMile, setSelectedValueMile] = useState('');
+  const [selectedValueMileTo, setSelectedValueMileTo] = useState('');
+  const dispatch = useDispatch();
+  // const [name, setName] = useState('');
 
   let makesOptions = [];
   let rentalPriceOptions = [];
 
-
   const handleSubmit = evt => {
     evt.preventDefault();
+    dispatch(filterCar(evt.currentTarget.value));
     console.log('evt.currentTarget.value', evt.currentTarget.value);
+    console.log('valueFilter', valueFilter);
 
     setQuery(evt.currentTarget.value);
     console.log('query', query);
@@ -38,8 +40,6 @@ const Searchbar = ({ onSubmit }) => {
     setQuery('');
   };
   // console.log('handleSubmit', handleSubmit);
-
-
 
   if (cars) {
     cars.forEach(item =>
@@ -50,20 +50,79 @@ const Searchbar = ({ onSubmit }) => {
     );
   }
 
-
-
-  // const handleInputChange = inputValue => {
-  //   setValueSelect(inputValue);
-  //   console.log('inputValue', inputValue);
-  // };
-
+ 
 
   const handleChange = selectedOption => {
     setSelectedValue(selectedOption.value);
-    console.log('SelectedValueu 98', selectedValue);
+
+    // console.log('SelectedValueu 60', selectedValue);
+    // console.log('selectedValue 61', selectedValue.currentTarget.value);
   };
 
-  
+  const handleChangePrice = selectedOption => {
+    setSelectedValuePrice(selectedOption.value);
+
+    // console.log('SelectedValueuPrice 60', selectedValuePrice);
+    // console.log('selectedValue 61', selectedValue.currentTarget.value);
+  };
+
+  // const handleChange = selectedOption => {
+  //   const {make, rentalPrice} = selectedOption.value;
+  //   console.log('make', make);
+  //   console.log('rentalPrice', rentalPrice);
+
+  //   switch (make) {
+  //     case "make":
+  //       setSelectedValue(make)
+  //       break;
+
+  //       case 'rentalPrice':
+  //         setSelectedValuePrice(rentalPrice)
+  //         break;
+
+  //         default: return;
+  //   }
+  //   // setSelectedValue(selectedOption.value);
+
+  //   console.log('SelectedValueu 60', selectedValue);
+  //   // console.log('selectedValue 61', selectedValue.currentTarget.value);
+  // };
+
+
+  const handleOnClick = evt => {
+    try {
+      dispatch(filterCar(evt.currentTarget.value));
+      console.log('evt.currentTarget.value', evt.currentTarget.value);
+      console.log('SelectedValueu ', selectedValue);
+      console.log('selectedValuePrice', selectedValuePrice);
+      console.log('selectedValueMile', selectedValueMile);
+      console.log('selectedValueMileTo', selectedValueMileTo);
+    } catch (error) {
+      console.log('error', error.messege);
+    }
+  };
+
+
+  const handleChangeMile = evt => {
+    const { name, value } = evt.currentTarget;
+    console.log('name', name);
+    console.log('value', value);
+
+    switch (name) {
+      case 'selectedValueMile':
+        setSelectedValueMile(value);
+        break;
+
+      case 'selectedValueMileTo':
+        setSelectedValueMileTo(value);
+        break;
+
+      default:
+        return;
+    }
+  };
+
+
   return (
     <form className={css.form} onSubmit={handleSubmit}>
       <label className={css.form__text}>
@@ -72,6 +131,7 @@ const Searchbar = ({ onSubmit }) => {
           placeholder="Enter the text..."
           className={css.form__select}
           name="make"
+          // value={selectedValue}
           options={[{ value: 'Enter the text...' }, ...makesOptions]}
           onChange={handleChange}
         />
@@ -84,7 +144,7 @@ const Searchbar = ({ onSubmit }) => {
           className={css.form__select}
           name="rentalPrice"
           options={[{ value: 'To $' }, ...rentalPriceOptions]}
-          onChange={handleChange}
+          onChange={handleChangePrice}
         />
       </label>
 
@@ -94,12 +154,12 @@ const Searchbar = ({ onSubmit }) => {
           <input
             className={css.form__text__input}
             type="text"
-            mask="9,999"
+            mask='9,999'
             autoComplete="off"
             autoFocus
-            name="query"
-            value={query}
-            // onChange={handleChange}
+            name="selectedValueMile"
+            // value={selectedValueMileW}
+            onChange={handleChangeMile}
             id="mileFrom"
           />
           <label htmlFor="mileFrom" className={css.form__text__inputlabel}>
@@ -112,9 +172,8 @@ const Searchbar = ({ onSubmit }) => {
             type="text"
             autoComplete="off"
             autoFocus
-            name="query"
-            value={query}
-            // onChange={handleChange}
+            name="selectedValueMileTo"
+            onChange={handleChangeMile}
             id="mileTo"
           />
           <label for="mileTo" className={css.form__text__inputlabelto}>
@@ -123,7 +182,7 @@ const Searchbar = ({ onSubmit }) => {
         </div>
       </label>
 
-      <button type="submit" className={css.search_btn}>
+      <button type="submit" className={css.search_btn} onClick={handleOnClick}>
         <span className="button-label">Search</span>
       </button>
     </form>
